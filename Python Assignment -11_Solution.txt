@@ -1,0 +1,288 @@
+Python Assignment - 11
+
+1. Create an assert statement that throws an AssertionError if the variable spam is a negative
+   integer.
+
+Sol: Use the assert statement to check conditions that should be true during the program execution. If the condition evaluates to False, 
+     it raises an AssertionError.
+
+     To check if the variable spam is a negative integer, you can use the following assert statement:-
+
+     assert spam >= 0, "spam should be a non-negative integer"
+
+   If spam is a negative integer, the AssertionError will be raised, and the error message "spam should be a non-negative integer"
+   will be displayed. Otherwise, the program will continue without any issues.
+
+2. Write an assert statement that triggers an AssertionError if the variables eggs and bacon contain
+   strings that are the same as each other, even if their cases are different (that is, 'hello' and 'hello' are
+   considered the same, and 'goodbye' and 'GOODbye' are also considered the same).
+
+
+Sol: To check if the variables eggs and bacon contain strings that are the same, ignoring the case, We can use the following assert statement 
+     with case - insensitive string comparison:-
+
+    assert eggs.lower() != bacon.lower(), "eggs and bacon should not be the same (case-insensitive)"
+  
+    In this statement, .lower() is used to convert both eggs and bacon to lowercase, ensuring that case differences are ignored when comparing the strings. 
+    If the strings are the same, regardless of their cases, an AssertionError will be triggered with the specified error message. 
+    Otherwise, the program will continue normally.
+
+
+3. Create an assert statement that throws an AssertionError every time.
+
+Sol: To create an assert statement that throws an AssertionError every time, we can use a condition that always evaluates to False.
+     One way to do this is to use the False keyword in the assert statement:-
+
+     assert False, "This assert statement always raises an AssertionError"
+
+     In this statement, the condition is simply False, which is always false. As a result, the assert statement will always raise an AssertionError, 
+     and the specified error message will be displayed. Keep in mind that using an assert statement like this should typically be avoided in actual
+     code, as it does not serve any useful purpose and could lead to confusion for other developers working with the code.
+
+4. What are the two lines that must be present in your software in order to call logging.debug()?
+
+Sol: To use the logging.debug() function :-
+
+   1. Importing the logging module: This line allows you to access the logging module and its functions in your code. 
+      We can import the module using the following line at the beginning of our script:-
+
+    Eg - import logging
+
+   2. Configuring the logging level: Before you can call logging.debug(), you need to set the logging level to a level that includes the DEBUG level. 
+      We can do this using the basicConfig function from the logging module.
+
+    Eg- logging.basicConfig(level=logging.DEBUG)
+
+
+5. What are the two lines that your program must have in order to have logging.debug() send a
+   logging message to a file named programLog.txt?
+
+Sol: To send logging.debug() messages to a file named "programLog.txt," you need to include two lines:-
+
+   1. Importing the logging module: This line allows you to access the logging module and its functions in your code.
+    You can import the module using the following line at the beginning of your script:-
+
+  Eg - import logging
+
+  2. Configuring the logging to write to a file: Before you can use logging.debug() to send messages to a file, we need to configure the
+     logger to write to the file. You can achieve this with the following lines:-
+
+   Eg - import logging
+      # Configure logging to write to a file named programLog.txt
+      logging.basicConfig(filename='programLog.txt', level=logging.DEBUG)
+
+6. What are the five levels of logging?
+
+Sol: The Python logging module defines five standard levels of logging, listed below in ascending order of severity:-
+
+  1. DEBUG: The lowest level of logging. Used for detailed debugging information. Messages logged at this level are typically useful for 
+     developers when trying to diagnose issues.
+
+ 2. INFO: Used for general information about the program's execution. It provides a coarse-grained view of what's happening in the application.
+
+ 3. WARNING: Used to indicate potential issues or situations that might lead to problems later on. The program can still continue its execution 
+    when logging warnings.
+
+ 4. ERROR: Used to log errors that caused a problem with the program's execution. These errors might require attention or intervention.
+
+ 5. CRITICAL: The highest level of logging. Used to indicate severe errors that may cause the program to crash or halt unexpectedly.
+    Critical messages usually demand immediate attention.
+
+
+7. What line of code would you add to your software to disable all logging messages?
+
+Sol: To disable all logging messages in your software, you can add the following line of code:-
+
+   1. import logging
+      logging.disable(logging.CRITICAL)
+
+   The logging.disable() function is used to disable all logging messages at or below the specified severity level. In this case, 
+   logging.CRITICAL is used as the severity level, which means all log messages (DEBUG, INFO, WARNING, ERROR, and CRITICAL) will be disabled.
+
+
+ 8. Why is using logging messages better than using print() to display the same message?
+
+Sol: Using logging messages is generally better than using print() to display messages for several reasons:-
+
+   1. Granular control: With logging, you can set different logging levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) for different parts of our code.
+
+   2. Logging levels: By using different logging levels, you can filter and display only the messages that are relevant to our current debugging
+      or production needs.
+
+   3. Flexibility: Logging allows you to direct messages to different outputs like console, files, or external services, without modifying the code. 
+
+   4. Performance and Scalability: In production, excessive print() statements can slow down the application, especially if it's handling a large 
+      number of messages. Logging is more efficient and can be optimized for performance.
+
+   5. Easy to disable: If you decide to remove logging messages from your code in production, we can simply change the logging level or disable 
+      logging altogether by modifying the logging configuration. This is much cleaner than manually commenting out print() statements.
+
+ 9. What are the differences between the Step Over, Step In, and Step Out buttons in the debugger?
+
+ Sol: The Step Over, Step In, and Step Out buttons are commonly found in debuggers, including integrated development environments (IDEs) 
+      like PyCharm, Visual Studio Code, and others. 
+
+   1. Step Over:
+
+    Function: The Step Over button allows the debugger to execute the current line of code. If the current line contains a function call, the 
+    entire  function will be executed as one step. However, the debugger will not go into the details of the function, and the next line after 
+    the function call will be the focus of the debugger.
+
+  
+   2. Step In:
+
+     Function: The Step In button is used to step into a function call. When the current line contains a function call, pressing Step In will cause
+     the debugger to enter the called function and start debugging it line by line. The focus of the debugger will now be on the first line of the
+     called function.
+
+   3. Step Out:
+
+    Function: The Step Out button is used to continue debugging until the current function returns and control is back to the calling function. 
+    It allows you to execute the remaining lines of the current function without having to step through each line individually.
+
+
+    Step Over: To execute the current line and skip over the details of function calls.
+    Step In: To enter the called function and debug it line by line.
+    Step Out: To continue debugging until the current function returns and control is back to the calling function.
+
+
+10. After you click Continue, when will the debugger stop ?
+
+Sol: After clicking the "Continue" button in the debugger, the debugger will stop when one of the following conditions is met:-
+
+
+   1. A Breakpoint is Reached: If there are breakpoints set in the code, the debugger will stop when the execution reaches any of those 
+      breakpoints. Breakpoints allow you to pause the execution at specific lines or conditions, making it easier to inspect variables and 
+      investigate the state of your code at specific points in its execution.
+
+   2. An Exception is Raised and Not Handled: If an exception is raised during the execution of the code, and it is not handled (i.e., there is
+      no surrounding try-except block to catch the exception), the debugger will stop when the exception is raised. This allows you to examine the
+      state of the program at the time of the exception.
+
+   3. The End of the Program is Reached: If there are no breakpoints, and no unhandled exceptions occur, the debugger will continue executing the 
+      code until it reaches the end of the program. At that point, the debugger will stop, and the debugging session will end.
+
+   4. The User Interrupts the Execution: Sometimes, you may manually interrupt the execution by clicking the "Stop" or "Pause" button in the debugger 
+      or using a keyboard shortcut. In such cases, the debugger will stop immediately, and the debugging session will end.
+
+
+11. What is the concept of a breakpoint?
+
+Sol: Breakpoints are used to gain more control over the debugging process and provide a way to focus on specific parts of the code that may 
+     be causing issues or that require closer examination.
+
+     Key points about breakpoints:-
+
+   1. Setting Breakpoints: Breakpoints can be set at specific lines of code or at the start of a function.
+
+   2. Conditionally Breaking: In addition to setting breakpoints at specific lines, we can also set conditional breakpoints. These are breakpoints
+      that only trigger when a specified condition is met. For example, you can set a breakpoint to stop the execution when a variable reaches a 
+      certain value.
+
+   3. Inspecting State: Once the debugger stops at a breakpoint, you can inspect the values of variables at that particular moment in the code.
+      This helps you understand how the program behaves at a given point and identify any issues.
+
+   4. Stepping Through Code: After hitting a breakpoint, you can step through the code line by line, watching how variables change and understanding 
+      the program's flow more precisely.
+
+   5. Breakpoint Removal: Breakpoints can be removed or disabled when they are no longer needed. This allows to control when and where the 
+      program will pause during future debugging sessions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
